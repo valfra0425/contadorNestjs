@@ -5,4 +5,3 @@ no docker com um "docker-composer up" e só assim iniciar o nest com "npm run st
 
 O projeto tem 3 rotas, a rota de post que cria um contador,  a rota get que busca um contador e atualiza a cada segundo com o sse e o put que atualiza o contador
 em 1. O projeto utiliza cache do redis no get e no put.
-
