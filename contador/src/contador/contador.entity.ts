@@ -6,7 +6,6 @@ export class Contador {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({default: 0})
     contador: number
-    default: 0;
 }
