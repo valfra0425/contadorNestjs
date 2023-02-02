@@ -1,0 +1,11 @@
+<script>
+    const eventSourse = new EventSource('/contador/sse');
+
+    eventSourse.onmessage = (data) => {
+        const message = document.createElement('li');
+        message.innerText = data;
+
+        document.body.appendChild(message);
+        eventSourse.onmessage = ({data}) => message.innerText = data;
+    }
+</script>

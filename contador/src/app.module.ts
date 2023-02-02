@@ -1,6 +1,8 @@
 import { CacheModule, Module } from '@nestjs/common';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as redisStore from 'cache-manager-redis-store'
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Contador } from './contador/contador.entity';
@@ -8,12 +10,15 @@ import { ContadorModule } from './contador/contador.module';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client')
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'ifrn.cn',
       database: 'contador',
       entities: [Contador],
       synchronize: true,
