@@ -10,7 +10,7 @@ export class ContadorRepository {
     }
 
     async getContador(id: number): Promise <Contador> {
-        return this.contadorRepository.findOneBy({id});
+        return await this.contadorRepository.findOneBy({id});
     }
 
     async createContador(){
@@ -29,6 +29,6 @@ export class ContadorRepository {
     async incrementContador(id: number){
         const contador = await this.getContador(id);
         contador.contador++
-        return this.contadorRepository.save(contador);
+        return await this.contadorRepository.save(contador);
     }
 }

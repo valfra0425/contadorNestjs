@@ -22,7 +22,7 @@ export class ContadorService {
     }
 
     async createContador(){
-        return this.contadorRepository.createContador();
+        return await this.contadorRepository.createContador();
     }
 
     async incrementContador(id){
@@ -31,6 +31,6 @@ export class ContadorService {
             cachedData.contador++
             await this.cacheService.set(id.toString(), cachedData)
         }
-        return this.contadorRepository.incrementContador(id);
+        return await this.contadorRepository.incrementContador(id);
     }
 }

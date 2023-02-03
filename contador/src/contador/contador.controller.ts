@@ -8,8 +8,12 @@ export class ContadorController {
     }
 
     @Get(':id')
-    @Sse('sse')
-    async getContador(@Param('id') id: string):  Promise<Observable<MessageEvent>> {
+    async getContador(@Param('id') id) {
+        return await this.contadorService.getContador(id);
+    }
+
+    @Sse('sse/:id')
+    async sse(@Param('id') id: string):  Promise<Observable<MessageEvent>> {
         return interval(1000).pipe(switchMap((_) => this.contadorService.getContador(id)),
         map((p) => ({data: p})))
     }

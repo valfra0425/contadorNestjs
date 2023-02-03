@@ -1,5 +1,6 @@
-<script>
-    const eventSourse = new EventSource('/contador/sse');
+<script> 
+    let i = (window.location.pathname).replace(/[^0-9]/g, '')
+    const eventSourse = new EventSource('/contador/sse/'+i);
 
     eventSourse.onmessage = (data) => {
         const message = document.createElement('li');

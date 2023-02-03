@@ -11,14 +11,15 @@ import { ContadorModule } from './contador/contador.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client')
+      rootPath: join(__dirname, '..', 'client'),
+      renderPath: '/render/:id',
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'ifrn.cn',
+      password: '',
       database: 'contador',
       entities: [Contador],
       synchronize: true,
